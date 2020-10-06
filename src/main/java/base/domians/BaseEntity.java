@@ -7,7 +7,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public class BaseEntity<PK extends Serializable> implements Serializable {
     @Id
-    @Type(type = "Long")
+    @Type(type = "PK")
     @Column(name = "id", nullable = false, updatable = false, unique = true)
     private PK id;
 

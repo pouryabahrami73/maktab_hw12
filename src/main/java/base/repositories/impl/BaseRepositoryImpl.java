@@ -17,8 +17,7 @@ import java.util.Optional;
 
 
 public class BaseRepositoryImpl<E, PK extends Serializable> implements BaseRepository<E, PK> {
-    protected final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
-    protected final EntityManager entityManager = entityManagerFactory.createEntityManager();
+    protected final EntityManager entityManager = EntityManagerMaker.getEntityManager();
 
     @Override
     public E save(E e) {

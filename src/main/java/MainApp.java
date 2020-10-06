@@ -25,6 +25,7 @@ public class MainApp {
         }else if (choice == 2){
             String methodName = customerCommands.customerOptionsInATM();
             ATMService atmService = new ATMService();
+            System.out.println(atmService.getClass().getMethods());
             atmService.getClass().getMethod(methodName);
             System.err.println("ATM");
         }
