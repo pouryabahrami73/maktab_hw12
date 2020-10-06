@@ -10,24 +10,45 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 public class Employee extends BaseEntity<Long> {
+    public Employee(String firstName, String lastName, long nationalCode, LocalDate birthday, String password) {
+        super(nationalCode);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nationalCode = nationalCode;
+        this.birthday = birthday;
+        this.password = password;
+    }
+
     @Column
-    private String userName;
+    private String firstName;
+    @Column
+    private String lastName;
     @Column(unique = true)
     private long nationalCode;
     @Column
     private LocalDate birthday;
     @Column
     private  String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_role")
     private Role role;
 
-    public String getUserName() {
-        return userName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 
     public long getNationalCode() {
         return nationalCode;

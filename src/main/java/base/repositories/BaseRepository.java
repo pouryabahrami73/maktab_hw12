@@ -9,6 +9,7 @@ public interface BaseRepository<E, PK extends Serializable> {
 
     E save(E e);
 
+    E findById (PK id);
     Optional<E> findByTitle(String title);
 
     void deleteByTitle(String title);
@@ -18,4 +19,7 @@ public interface BaseRepository<E, PK extends Serializable> {
     List<E> findAll();
 
 
+    void deleteById(PK id);
+
+    <E, PK extends Serializable> List<E> findAllByIdsIn(Collection<PK> ids);
 }

@@ -1,6 +1,5 @@
 package services.menu;
 
-import domains.Article;
 import domains.Employee;
 
 import java.lang.reflect.InvocationTargetException;
@@ -9,17 +8,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerCommands {
-    private AlternativeMaker<String> alternativeMaker = null;
-    private List<String> adminAccessibleFields = Arrays.asList("Title", "Brief", "Content", "PublishedDate",
-            "Writes", "CreateDate", "Published");
-    private Employee admin = null;
+    private AlternativeMaker<String> alternativeMaker = new AlternativeMaker<>();
+    private Employee employee = null;
     Scanner scanner = new Scanner(System.in);
-    public void editFields() throws NoSuchMethodException,
+    public String customerOptionsInBank() throws NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, ClassNotFoundException {
-        ArticleCommands articleCommands = new ArticleCommands();
-        Article article = articleCommands.chooseOneArticle(admin);
-        long choice = alternativeMaker.AlternativeMaker(adminAccessibleFields, "toString");
-        System.out.println("Please write your new " + adminAccessibleFields.get((int) choice - 1) + " :");
-        articleCommands.editArticle(article, adminAccessibleFields.get((int) choice - 1), scanner.nextLine());
+        List<String> customerOptionsInBank = Arrays.asList("Open new account", "Deposit money", "Take cash",
+                "Transfer money to another account");
+        String choice = alternativeMaker.AlternativeMaker(customerOptionsInBank);
+        return choice;
+    }
+
+    public String customerOptionsInATM() throws NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, ClassNotFoundException {
+        List<String> customerOptionsInBank = Arrays.asList("Take cash",
+                "Transfer money to another card", "See my balance", "Change card password");
+        String choice = alternativeMaker.AlternativeMaker(customerOptionsInBank);
+        return choice;
     }
 }

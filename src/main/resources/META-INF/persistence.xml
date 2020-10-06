@@ -3,7 +3,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
-    <persistence-unit name="ir.pb">
+    <persistence-unit name="my-persistence-unit">
         <description>Hibernate Practise In Session 30</description>
 
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
